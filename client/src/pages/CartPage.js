@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { getCartItems, removeCartItem } from "../_actions/user_actions";
 import styled from "styled-components";
@@ -62,7 +62,7 @@ const CartPage = (props) => {
     }
   }, [props.user.userData, dispatch]);
 
-  const calculateTotal = (cartDetail) => {
+  const calculateTotal = useCallback((cartDetail) => {
     let total = 0;
 
     cartDetail.map((item) => {
@@ -71,7 +71,8 @@ const CartPage = (props) => {
 
     setTotal(total);
     setShowTotal(true);
-  };
+  }, []);
+
   const removeFromCart = (productId) => {
     dispatch(removeCartItem(productId)).then((response) => {
       if (response.payload.cartDetail.length <= 0) {

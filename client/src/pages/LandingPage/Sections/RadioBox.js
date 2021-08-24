@@ -103,7 +103,7 @@ const RadioBox = (props) => {
   );
 };
 
-export default RadioBox;
+export default React.memo(RadioBox);
 // const RadioBox = (props) => {
 //   const [Price, setPrice] = useState("0");
 

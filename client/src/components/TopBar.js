@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { withRouter, Link } from "react-router-dom";
 import styled from "styled-components";
-import { useSelector } from "react-redux";
+import { shallowEqual, useSelector } from "react-redux";
 import Axios from "axios";
 import * as FaIcons from "react-icons/fa";
 import { USER_SERVER } from "../modules/utils/Config";
@@ -216,4 +216,4 @@ const TopBar = (props) => {
   );
 };
 
-export default withRouter(TopBar);
+export default React.memo(withRouter(TopBar));
