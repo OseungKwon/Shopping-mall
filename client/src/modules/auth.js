@@ -1,4 +1,3 @@
-import { createAction, handleActions } from 'redux-actions';
 import { USER_SERVER } from './utils/Config';
 import axios from 'axios';
 
