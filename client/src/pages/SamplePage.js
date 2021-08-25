@@ -17,6 +17,17 @@ const Menu = styled.div`
 
 const SamplePage = () => {
   const [Show, setShow] = useState(true);
+  const data = {
+    name: "jamong",
+    condition: "great"
+  };
+  const dataKey = Object.keys(data);
+  for (var i = 0; i < 2; i++) {
+    window.localStorage.setItem(dataKey[i], data[dataKey[i]]);
+  }
+  for (var i = 0; i < 2; i++) {
+    console.log(window.localStorage.getItem(dataKey[i]));
+  }
   if (Show === false) {
   }
   return (

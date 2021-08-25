@@ -43,18 +43,38 @@ const ProductPage = (props) => {
   const productId = props.match.params.productId;
   const [Product, setProduct] = useState([]);
 
+  if (window.localStorage.length > 0) {
+    const dataKey = window.localStorage.getItem("key");
+
+    for (var i = 0; i < dataKey.length; i++) {
+      console.log("c", window.localStorage.getItem(dataKey[i]));
+    }
+  } else {
+  }
+
   useEffect(() => {
     Axios.get(`/api/product/products_by_id?id=${productId}&type=single`).then(
       (response) => {
         setProduct(response.data[0]);
       }
     );
-  }, []);
+  }, [productId]);
 
   const addToCartHandler = () => {
     dispatch(addToCart(Product._id));
     props.history.push("/");
   };
+
+  const dataKey = Object.keys(Product);
+  window.localStorage.setItem("key", [...dataKey]);
+  console.log(window.localStorage.getItem("key"));
+  console.log(dataKey);
+  for (var i = 0; i < dataKey.length; i++) {
+    window.localStorage.setItem(dataKey[i], Product[dataKey[i]]);
+  }
+  for (var i = 0; i < dataKey.length; i++) {
+    //console.log("c", window.localStorage.getItem(dataKey[i]));
+  }
 
   return (
     <Wrapper>

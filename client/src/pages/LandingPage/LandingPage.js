@@ -160,6 +160,7 @@ const LandingPage = () => {
     };
     getProducts(data);
 
+    console.log(data);
     setFilters(newFilters);
   };
 
