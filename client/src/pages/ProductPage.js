@@ -45,8 +45,8 @@ const ProductPage = (props) => {
 
   //
   useEffect(() => {
-    // 제품 아이디를 키로 가지고 있는 localStorage가 존재하지 않으면,
-    if (window.localStorage.getItem(productId) === null) {
+    // 제품 아이디를 키로 가지고 있는 Session Storage 존재하지 않으면,
+    if (window.sessionStorage.getItem(productId) === null) {
       console.log(productId);
       // Axios를 통해 서버에서 제품 데이터를 받아온다.
       Axios.get(`/api/product/products_by_id?id=${productId}&type=single`).then(
@@ -55,10 +55,10 @@ const ProductPage = (props) => {
           setProduct(response.data[0]);
         }
       );
-      // 제품 아이디를 키로 가지고 있는 localStorage가 존재하면,
+      // 제품 아이디를 키로 가지고 있는 Session Storage 존재하면,
     } else {
-      // localStorage에서 데이터를 받아와 seProduct해준다.
-      const getData = JSON.parse(window.localStorage.getItem(productId));
+      // sessionStorage에서 데이터를 받아와 seProduct해준다.
+      const getData = JSON.parse(window.sessionStorage.getItem(productId));
       setProduct(getData);
     }
   }, [productId]);
@@ -67,11 +67,11 @@ const ProductPage = (props) => {
   useEffect(() => {
     // 페이지에 접속했을 때, Product는 []과 같이 초기화된 상태이므로 예외 처리
     if (Product.length !== 0) {
-      // 제품 아이디를 키로 가지고 있는 localStorage가 존재하지 않으면,
-      if (window.localStorage.getItem(productId) === null) {
-        // Product 데이터를 localStorage에 제품아이디를 키로 하여 저장시킨다.
+      // 제품 아이디를 키로 가지고 있는 Session Storage 존재하지 않으면,
+      if (window.sessionStorage.getItem(productId) === null) {
+        // Product 데이터를 sessionStorage에 제품아이디를 키로 하여 저장시킨다.
         const data = JSON.stringify(Product);
-        window.localStorage.setItem(productId, data);
+        window.sessionStorage.setItem(productId, data);
         console.log("server"); // 서버에서 데이터 받아옴
       } else {
         console.log("local"); // 로컬에 저장된 데이터 사용
