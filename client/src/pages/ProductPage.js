@@ -86,11 +86,12 @@ const ProductPage = (props) => {
     dispatch(addToCart(Product._id));
     props.history.push("/");
   };
-
+  console.log(Product);
   return (
     <Wrapper>
       <ItemTitle>{Product.title}</ItemTitle>
       <ItemInfo>
+        <img src={Product.images} alt=""></img>
         <div>가격: {Product.price}$</div>
         <div>판매 횟수: {Product.sold}</div>
         <div>조회수: {Product.views}</div>

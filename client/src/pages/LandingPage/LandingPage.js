@@ -195,6 +195,11 @@ const LandingPage = () => {
           {Products.map((product) => (
             <ProductCard key={product._id}>
               <Link to={`/product/${product._id}`}>
+                <img
+                  src={product.images}
+                  alt=""
+                  style={{ width: "200px" }}
+                ></img>
                 <Title>{product.title}</Title>
                 <Sub>{product.price} $</Sub>
               </Link>
