@@ -196,9 +196,9 @@ const LandingPage = () => {
             <ProductCard key={product._id}>
               <Link to={`/product/${product._id}`}>
                 <img
-                  src={product.images}
-                  alt=""
-                  style={{ width: "200px" }}
+                  src={`http://localhost:5000/${product.images}`}
+                  alt="img"
+                  style={{ width: "200px", height: "200px" }}
                 ></img>
                 <Title>{product.title}</Title>
                 <Sub>{product.price} $</Sub>

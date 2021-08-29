@@ -2,7 +2,6 @@ import Axios from "axios";
 import React, { useState } from "react";
 import styled from "styled-components";
 import { InputForm, Button } from "../components/AuthForm";
-import FileUpload from "./FileUpload";
 
 const Wrapper = styled.div`
   margin: 6rem auto;
@@ -118,33 +117,35 @@ const UploadPage = (props) => {
   };
   //
 
-  //   const onImgChange = (e) => {
-  //     const imageFile = e.target.files[0];
-  //     const imageUrl = URL.createObjectURL(imageFile);
-  //     setSampleImage(imageUrl);
-  //     const formData = new FormData();
-  //     formData.append("file", e.target.files[0]);
-  //     Axios.post("/api/product/uploadImage", formData).then((res) => {
-  //       setImages(res.data.image);
-  //     });
-  //   };
-  //   console.log("img", Images);
-  const updateImages = (newImages) => {
-    setImages(newImages);
+  const onImgChange = (e) => {
+    const imageFile = e.target.files[0];
+    const imageUrl = URL.createObjectURL(imageFile);
+    setSampleImage(imageUrl);
+    const formData = new FormData();
+    formData.append("file", e.target.files[0]);
+    Axios.post("/api/product/uploadImage", formData).then((res) => {
+      alert("success");
+      setImages(res.data.image);
+    });
   };
+  console.log("img", Images);
+
   return (
     <Wrapper>
       <Form onSubmit={onSubmit}>
         <UploadImage>
-          {/* <img src={sampleImage} alt="" style={{ width: "100%" }}></img>
+          <img
+            src={`http://localhost:5000/${Images}`}
+            alt=""
+            style={{ width: "100%" }}
+          ></img>
           <input
             id="Image"
             type="file"
             accept="image/*"
             name="file"
             onChange={onImgChange}
-          /> */}
-          <FileUpload refreshFunction={updateImages} />
+          />
         </UploadImage>
         <UploadContent>
           <InputForm>

@@ -91,7 +91,10 @@ const ProductPage = (props) => {
     <Wrapper>
       <ItemTitle>{Product.title}</ItemTitle>
       <ItemInfo>
-        <img src={Product.images} alt=""></img>
+        <img
+          src={`http://localhost:5000/${Product.images}`}
+          alt="이미지 어디감"
+        ></img>
         <div>가격: {Product.price}$</div>
         <div>판매 횟수: {Product.sold}</div>
         <div>조회수: {Product.views}</div>
