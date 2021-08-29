@@ -45,13 +45,48 @@ const Form = styled.form`
 `;
 
 const UploadImage = styled.div`
+  position: relative;
+  flex: 1;
   width: 500px;
-  margin: 2rem;
+  img {
+    height: 400px;
+    width: 100%;
+    object-fit: cover;
+    display: flex;
+    justify-content: center;
+  }
+  label {
+    position: absolute;
+    left: 0;
+    bottom: 31.5px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    padding: 0.4rem;
+    background: #909090;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+  }
 `;
 
 const UploadContent = styled.div`
+  flex: 1;
   width: 250px;
   margin: 2rem;
+`;
+
+const Input = styled.input`
+  display: none;
+  /* margin-top: 2rem;
+  width: 100%;
+  padding: 0.4rem;
+  background: #0078ff;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer; */
 `;
 
 const Continents = [
@@ -134,13 +169,12 @@ const UploadPage = (props) => {
     <Wrapper>
       <Form onSubmit={onSubmit}>
         <UploadImage>
-          <img
-            src={`http://localhost:5000/${Images}`}
-            alt=""
-            style={{ width: "100%" }}
-          ></img>
-          <input
-            id="Image"
+          <img src={`http://localhost:5000/${Images}`} alt=""></img>
+          <label className="input-file-button" for="input-file">
+            제품 업로드
+          </label>
+          <Input
+            id="input-file"
             type="file"
             accept="image/*"
             name="file"

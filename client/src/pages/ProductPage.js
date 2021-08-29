@@ -29,12 +29,27 @@ const ItemInfo = styled.div`
   border: 1px solid #adadad;
   margin-top: 2rem;
   font-size: 1rem;
+  display: flex;
+  flex-direction: row;
 `;
-const ItemDescription = styled.div`
-  margin: 1rem;
-  margin-bottom: 0;
-  padding: 1rem;
+const ItemDescription = styled.p`
   border: 1px solid #adadad;
+  padding: 1rem;
+  height: 67.5%;
+  white-space: pre-line;
+`;
+
+const LeftSide = styled.div`
+  flex: 1;
+`;
+const RightSide = styled.div`
+  flex: 1;
+  margin-left: 1rem;
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  > * {
+    margin-bottom: 1rem;
+  }
 `;
 
 const ProductPage = (props) => {
@@ -91,16 +106,20 @@ const ProductPage = (props) => {
     <Wrapper>
       <ItemTitle>{Product.title}</ItemTitle>
       <ItemInfo>
-        <img
-          src={`http://localhost:5000/${Product.images}`}
-          alt="이미지 어디감"
-        ></img>
-        <div>가격: {Product.price}$</div>
-        <div>판매 횟수: {Product.sold}</div>
-        <div>조회수: {Product.views}</div>
+        <LeftSide>
+          <img
+            src={`http://localhost:5000/${Product.images}`}
+            alt="이미지 어디감"
+          ></img>
+        </LeftSide>
+        <RightSide>
+          <div>가격: {Product.price}$</div>
+          <div>판매 횟수: {Product.sold}</div>
+          <div>조회수: {Product.views}</div>
+          <ItemDescription>{Product.description}</ItemDescription>
+          <Button onClick={addToCartHandler}>쇼핑카트에 담기</Button>
+        </RightSide>
       </ItemInfo>
-      <ItemDescription>{Product.description}</ItemDescription>
-      <Button onClick={addToCartHandler}>쇼핑카트에 담기</Button>
     </Wrapper>
   );
 };

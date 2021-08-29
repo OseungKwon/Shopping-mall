@@ -29,6 +29,10 @@ const ProductsBlock = styled.div`
     border-radius: 1px;
     //padding: 2rem;
     margin: 1rem;
+    &:hover {
+      transform: scale(1.01);
+      border: 1px solid black;
+    }
   }
 `;
 const ProductCard = styled.div`
@@ -40,9 +44,6 @@ const ProductCard = styled.div`
   color: black;
   & > a {
     color: black;
-    &:hover {
-      color: #0078ff;
-    }
   }
 `;
 
