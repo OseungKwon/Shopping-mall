@@ -3,14 +3,19 @@ import styled from "styled-components";
 
 const SearchItem = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   margin: 0.5rem;
 `;
 
 const InputBox = styled.input`
-  width: 15rem;
+  padding-left: 1rem;
+  width: 30rem;
+  height: 3rem;
+  border: 1px solid #cacaca;
+  outline: none;
+  margin: 2rem;
   &::placeholder {
-    padding-left: 0.5rem;
+    color: #a5a5a5;
   }
 `;
 

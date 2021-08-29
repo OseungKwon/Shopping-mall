@@ -1,43 +1,21 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled, { createGlobalStyle } from "styled-components";
 
-import { Radio, Collapse } from "antd";
 import "antd/dist/antd.css";
-const { Panel } = Collapse;
+import { Select } from "antd";
+
+const { Option, OptGroup } = Select;
 
 const BoxArea = styled.div`
-  flex: 1;
-  border: 1px solid #0078ff;
-  border-radius: 5px;
-  margin: 0.5rem;
   display: flex;
-  height: 5rem;
-`;
+  justify-content: flex-end;
+  flex: 1;
+  margin: 1rem;
 
-const BoxName = styled.div`
-  flex: 1;
-  border-right: 3px solid rgba(0, 120, 255, 0.7);
-  font-weight: bold;
-  font-size: 1rem;
-  color: #0078ff;
-  display: flex;
-  align-items: center;
-  height: 100%;
-  padding-left: 1rem;
-  padding-right: 1rem;
-`;
-const BoxInfo = styled.div`
-  margin: 0.3rem;
-  flex: 5;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  display: flex;
-  flex-wrap: wrap;
-  align-content: center;
-  align-content: space-around;
-  & > span {
-    padding-left: 0.1rem;
-    padding-right: 0.1rem;
+  > * > * {
+    border: 1px solid #cacaca;
+    border-radius: 0;
+    width: 12rem;
   }
 `;
 
@@ -77,28 +55,30 @@ const price = [
 const RadioBox = (props) => {
   const [Price, setPrice] = useState(0);
 
-  const handleChange = (e) => {
-    setPrice(e.target.value);
-    props.handleFilter(e.target.value);
+  const handleChange = (value) => {
+    console.log(value);
+    props.handleFilter(value);
   };
+  console.log(price[0]);
 
   return (
     <BoxArea>
-      <BoxName>price</BoxName>
-      <BoxInfo onChange={handleChange} value={Price}>
-        {price.map((value, index) => (
-          <span key={index}>
-            <input
-              type="radio"
-              id="continents"
-              value={`${value._id}`}
-              name="radioGroup"
-              defaultChecked={value._id === 0}
-            />
-            <span style={{ marginLeft: "0.1rem" }}>{value.name}</span>
-          </span>
-        ))}
-      </BoxInfo>
+      <Select
+        showSearch
+        placeholder="Price"
+        onChange={handleChange}
+        filterOption={(input, option) =>
+          option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+        }
+      >
+        <OptGroup label="Price">
+          {price.map((value) => (
+            <Option key={value._id} value={`${value._id}`} id="price">
+              {value.name}
+            </Option>
+          ))}
+        </OptGroup>
+      </Select>
     </BoxArea>
   );
 };

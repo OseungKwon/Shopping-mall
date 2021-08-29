@@ -13,7 +13,7 @@ const TopBarBox = styled.div`
   top: 0;
   height: 3rem;
   width: 100%;
-  border-bottom: 3px solid #eeeeee;
+  //border-bottom: 3px solid #eeeeee;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -22,27 +22,20 @@ const LeftSide = styled.div`
   margin-left: 2rem;
   & > a {
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: 500;
     text-decoration: none;
     display: flex;
     align-items: center;
-    color: gray;
-
-    & > div {
-      color: black;
-      margin-right: 0.5rem;
-    }
+    color: black;
   }
 `;
 const RightSide = styled.div`
   position: relative;
-  margin-right: 3rem;
+  margin-right: 4rem;
   @media screen and (max-width: 600px) {
     margin-right: 1rem;
   }
   & > :nth-child(1) {
-    background: #0078ff;
-    color: white;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
@@ -50,27 +43,30 @@ const RightSide = styled.div`
     margin-left: 1rem;
     text-decoration: none;
     font-size: 1rem;
-    color: #0078ff;
-    font-weight: bold;
+    color: #909090;
+
     &:hover {
       color: gray;
+      font-weight: bold;
     }
   }
 `;
 
 const Badge = styled.div`
   position: absolute;
-  left: 3.5rem;
-  top: -0.5rem;
+  left: 4.2rem;
+  top: -0.3rem;
   color: white;
-  width: 1rem;
-  height: 1rem;
+  width: 0.9rem;
+  height: 0.9rem;
   font-size: 0.8rem;
+  line-height: 0.9rem;
   display: flex;
   align-items: center;
   justify-content: center;
+
   border-radius: 50%;
-  background: #ff4040;
+  background: #0078ff;
   @media screen and (max-width: 600px) {
     display: none;
   }
@@ -95,8 +91,7 @@ const SideBar = styled.div`
   width: 100vw;
   padding: 0.5rem;
   & > :nth-child(1) {
-    background: #0078ff;
-    color: white;
+    color: #909090;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
@@ -104,10 +99,11 @@ const SideBar = styled.div`
     margin-left: 1rem;
     text-decoration: none;
     font-size: 1rem;
-    color: #0078ff;
-    font-weight: bold;
+    color: #909090;
+
     &:hover {
       color: gray;
+      font-weight: bold;
     }
   }
 `;
@@ -127,19 +123,19 @@ const SideButton = styled.div`
 const NormalState = styled.div`
   margin-right: 3rem;
   & > :nth-child(1) {
-    background: #0078ff;
-    color: white;
+    color: #909090;
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
   & > a {
-    margin-left: 1rem;
+    margin-left: 2rem;
     text-decoration: none;
     font-size: 1rem;
-    color: #0078ff;
-    font-weight: bold;
+    color: #909090;
+    //font-weight: bold;
     &:hover {
       color: gray;
+      font-weight: bold;
     }
   }
   @media screen and (max-width: 600px) {
@@ -164,7 +160,7 @@ const TopBar = (props) => {
     <TopBarBox>
       <LeftSide>
         <Link to="/">
-          <div>Jamong </div>shop
+          <div>Jamong Shop</div>
         </Link>
       </LeftSide>
       <RightSide>
@@ -201,7 +197,7 @@ const TopBar = (props) => {
                 <Link to="/logout" onClick={logoutHandler}>
                   Logout
                 </Link>
-                <Profile>{user.userData.name}</Profile>
+                {/* <Profile>{user.userData.name}</Profile> */}
               </NormalState>
             )}
           </>

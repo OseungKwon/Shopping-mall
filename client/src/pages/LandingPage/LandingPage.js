@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 const Wrapper = styled.div`
   margin: 6rem auto;
-  width: 70%;
+  width: 80%;
 `;
 const ProductsBlock = styled.div`
   display: grid;
@@ -25,16 +25,17 @@ const ProductsBlock = styled.div`
   }
   & > div {
     border: 1px solid #d3d3d3;
-    border-radius: 5px;
-    padding: 2rem;
-    margin: 0.5rem;
+    height: 24rem;
+    border-radius: 1px;
+    //padding: 2rem;
+    margin: 1rem;
   }
 `;
 const ProductCard = styled.div`
   display: flex;
 
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   text-align: center;
   color: black;
   & > a {
@@ -46,16 +47,15 @@ const ProductCard = styled.div`
 `;
 
 const Title = styled.div`
-  font-weight: 500;
+  font-weight: bold;
   font-size: 1.1rem;
-  margin-bottom: 0.5rem;
+  margin: 0.5rem;
 `;
 
 const Sub = styled.div``;
 
 const Select = styled.div`
   display: flex;
-  margin-bottom: 2rem;
   @media screen and (max-width: 1025px) {
     flex-direction: column;
   }
@@ -180,13 +180,13 @@ const LandingPage = () => {
 
   return (
     <Wrapper>
+      <Search refreshFunction={updateSearchTerms} />
       <Select>
-        <CheckBox
+        {/* <CheckBox
           handleFilter={(filters) => handleFilter(filters, "continents")}
-        />
+        /> */}
         <RadioBox handleFilter={(filters) => handleFilter(filters, "price")} />
       </Select>
-      <Search refreshFunction={updateSearchTerms} />
 
       {Products.length === 0 ? (
         <div>No data</div>
@@ -198,7 +198,11 @@ const LandingPage = () => {
                 <img
                   src={`http://localhost:5000/${product.images}`}
                   alt="img"
-                  style={{ width: "200px", height: "200px" }}
+                  style={{
+                    width: "100%",
+                    height: "18rem",
+                    objectFit: "cover"
+                  }}
                 ></img>
                 <Title>{product.title}</Title>
                 <Sub>{product.price} $</Sub>
