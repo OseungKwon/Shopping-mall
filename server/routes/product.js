@@ -18,13 +18,8 @@ let storage = multer.diskStorage({
   }
 });
 
-//
 
 const upload = multer({ storage: storage }).single("file");
-
-//=================================
-//             Product
-//=================================
 
 router.post("/uploadImage", auth, (req, res) => {
   upload(req, res, (err) => {
