@@ -62,14 +62,18 @@ const ProductPage = (props) => {
   useEffect(() => {
     // 제품 아이디를 키로 가지고 있는 Session Storage 존재하지 않으면,
     if (window.sessionStorage.getItem(productId) === null) {
-      console.log(productId);
-      // Axios를 통해 서버에서 제품 데이터를 받아온다.
-      Axios.get(`/api/product/products_by_id?id=${productId}&type=single`).then(
-        (response) => {
+      const getInfo = async () => {
+        console.log(productId);
+        // Axios를 통해 서버에서 제품 데이터를 받아온다.
+        Axios.get(
+          `/api/product/products_by_id?id=${productId}&type=single`
+        ).then((response) => {
           // 받아온 데이터를 useState(Product,setProduct)에 저장
           setProduct(response.data[0]);
-        }
-      );
+          console.log("성공");
+        });
+      };
+      getInfo();
       // 제품 아이디를 키로 가지고 있는 Session Storage 존재하면,
     } else {
       // sessionStorage에서 데이터를 받아와 seProduct해준다.
