@@ -48,6 +48,7 @@ if (process.env.NODE_ENV === "production") {
 
 const port = process.env.PORT || 5000;
 
+// 서버 띄우기
 app.listen(port, () => {
   console.log(`Server Running at ${port}`);
 });
