@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import AuthForm from '../components/AuthForm'
-import { registerUser } from '../modules/auth'
+import AuthForm from './AuthForm'
 
-const RegisterPage = (props) => {
+import { registerUser } from '../../modules/auth'
+const Register = ({ history }) => {
     const dispatch = useDispatch()
     const [form, setForm] = useState({
         name: '',
@@ -35,24 +35,25 @@ const RegisterPage = (props) => {
             .then(response => {
                 if (response.payload.success) {
                     console.log(response)
-                    props.history.push('/login')
+                    history.push('/login')
                 } else {
                     alert(response.payload.err.errmsg)
                 }
             })
 
     }
-
     return (
         <div>
-            <AuthForm
-                type="register"
-                onChange={onChange}
-                onSubmit={onSubmit}
+            <div>
+                <AuthForm
+                    type="register"
+                    onChange={onChange}
+                    onSubmit={onSubmit}
 
-            />
+                />
+            </div>
         </div>
     )
 }
 
-export default RegisterPage
+export default Register

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Wrapper } from "../components/AuthForm";
+import { Wrapper } from "../components/commonStyle";
 
 const SideBar = styled.div`
   border: 1px solid black;

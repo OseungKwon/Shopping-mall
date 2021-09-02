@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { shallowEqual, useSelector } from "react-redux";
 import Axios from "axios";
 import * as FaIcons from "react-icons/fa";
-import { USER_SERVER } from "../modules/utils/Config";
+import { USER_SERVER } from "../../modules/utils/Config";
 
 const TopBarBox = styled.div`
   background: white;

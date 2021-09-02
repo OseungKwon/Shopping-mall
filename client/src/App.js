@@ -1,15 +1,15 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import TopBar from "./components/TopBar";
-import Auth from "./components/hoc/auth";
+import TopBar from "./components/section/TopBar";
+import Auth from "./modules/hoc/auth";
 
 // pages
-import LandingPage from "./pages/LandingPage/LandingPage";
-import LoginPage from "./pages/LoginPage";
-import RegisterPage from "./pages/RegisterPage";
-import UploadPage from "./pages/UploadPage";
-import ProductPage from "./pages/ProductPage";
-import CartPage from "./pages/CartPage";
+import LandingPage from "./pages/Landing/LandingPage";
+import LoginPage from "./pages/Auth/LoginPage";
+import RegisterPage from "./pages/Auth/RegisterPage";
+import UploadPage from "./pages/Upload/UploadPage";
+import ProductPage from "./pages/Product/ProductPage";
+import CartPage from "./pages/Cart/CartPage";
 import SamplePage from "./pages/SamplePage";
 
 const App = () => {
