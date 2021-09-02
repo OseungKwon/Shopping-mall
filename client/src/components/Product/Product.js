@@ -1,6 +1,6 @@
 import Axios from "axios";
 import React, { useState, useEffect } from "react";
-import { Button } from "../../components/commonStyle";
+import { Button } from "../common/commonStyle";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../_actions/user_actions";
 import { Wrapper, ItemTitle, ItemInfo, ItemDescription, LeftSide, RightSide } from "./ProductStyle";

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { useDispatch } from "react-redux";
 import { getCartItems, removeCartItem } from "../../_actions/user_actions";
 
-import { Button } from "../../components/commonStyle";
+import { Button } from "../common/commonStyle";
 import { Wrapper, Table, TotalPrice } from "./CartStyle";
 
 const Cart = (props) => {

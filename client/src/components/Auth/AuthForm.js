@@ -1,5 +1,5 @@
 import React from "react";
-import { Wrapper, InputForm, Button } from "../commonStyle";
+import { Wrapper, InputForm, Button } from "../common/commonStyle";
 
 
 const AuthForm = ({ type, onSubmit, onChange }) => {

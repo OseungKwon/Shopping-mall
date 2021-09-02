@@ -1,6 +1,6 @@
 import Axios from "axios";
 import React, { useState } from "react";
-import { InputForm, Button } from "../../components/commonStyle";
+import { InputForm, Button } from "../common/commonStyle";
 import { Wrapper, TextArea, Select, Form, UploadImage, UploadContent, Input } from "./UploadStyle";
 
 const Continents = [

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import styled from "styled-components";
-import { Button } from "../../components/commonStyle";
+import { Button } from "../common/commonStyle";
 import CheckBox from "./Sections/CheckBox";
 import RadioBox from "./Sections/RadioBox";
 import Search from "./Sections/Search";
