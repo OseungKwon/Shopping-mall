@@ -1,39 +1,43 @@
-import React, { useEffect } from 'react';
-import { auth } from '../../_actions/user_actions';
+import React, { useEffect } from "react";
+//import { auth } from '../../_actions/user_actions';
+import { authUser } from "../../redux/authSlice";
 import { useSelector, useDispatch } from "react-redux";
+import axios from "axios";
 
 export default function (ComposedClass, reload, adminRoute = null) {
-    function AuthenticationCheck(props) {
+  function AuthenticationCheck(props) {
+    let user = useSelector(authUser);
+    console.log(user);
+    const dispatch = useDispatch();
+    useEffect(() => {
+      const show = async () => {
+        const res = await axios.get("/api/users/auth");
+        dispatch(authUser(res.data));
+      };
+      show();
+    }, [dispatch]);
+    // useEffect(() => {
 
-        let user = useSelector(state => state.user);
-        const dispatch = useDispatch();
+    //     dispatch(auth()).then(async response => {
+    //         if (await !response.payload.isAuth) {
+    //             if (reload) {
+    //                 props.history.push('/login')
+    //             }
+    //         } else {
+    //             if (adminRoute && !response.payload.isAdmin) {
+    //                 props.history.push('/')
+    //             }
+    //             else {
+    //                 if (reload === false) {
+    //                     props.history.push('/')
+    //                 }
+    //             }
+    //         }
+    //     })
 
-        useEffect(() => {
+    // }, [dispatch, props.history, user.googleAuth])
 
-            dispatch(auth()).then(async response => {
-                if (await !response.payload.isAuth) {
-                    if (reload) {
-                        props.history.push('/login')
-                    }
-                } else {
-                    if (adminRoute && !response.payload.isAdmin) {
-                        props.history.push('/')
-                    }
-                    else {
-                        if (reload === false) {
-                            props.history.push('/')
-                        }
-                    }
-                }
-            })
-
-        }, [dispatch, props.history, user.googleAuth])
-
-        return (
-            <ComposedClass {...props} user={user} />
-        )
-    }
-    return AuthenticationCheck
+    return <ComposedClass {...props} user={user} />;
+  }
+  return AuthenticationCheck;
 }
-
-

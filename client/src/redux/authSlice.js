@@ -1,8 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  loading: false,
-  success: false
+  userData: {
+    loading: false,
+    success: false
+  }
 };
 export const authSlice = createSlice({
   name: "user",
@@ -12,16 +14,16 @@ export const authSlice = createSlice({
       state.userData = action.payload;
     },
     postData: (state) => {
-      state.loading = true;
+      state.userData.loading = true;
     },
     postDataSuccess: (state) => {
-      state.loading = false;
-      state.success = true;
+      state.userData.loading = false;
+      state.userData.success = true;
     },
     postDataFailure: (state, action) => {
-      state.loading = false;
-      state.success = false;
-      state.err = action.payload;
+      state.userData.loading = false;
+      state.userData.success = false;
+      state.userData.err = action.payload;
     }
   }
 });

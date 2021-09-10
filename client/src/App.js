@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import TopBar from "./components/section/TopBar";
-//import Auth from "./modules/hoc/auth";
+import Auth from "./modules/hoc/auth";
 
 // pages
 import LandingPage from "./pages/Landing/LandingPage";
@@ -18,7 +18,7 @@ const App = () => {
       {/* <TopBar /> */}
       <div>
         <Switch>
-          <Route exact path="/register" component={RegisterPage} />
+          <Route exact path="/register" component={Auth(RegisterPage, true)} />
 
           {/* <Route exact path="/" component={Auth(LandingPage, null)} />
           <Route exact path="/login" component={Auth(LoginPage, false)} />
