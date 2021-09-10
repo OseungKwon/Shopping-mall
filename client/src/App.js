@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import TopBar from "./components/section/TopBar";
-import Auth from "./modules/hoc/auth";
+//import Auth from "./modules/hoc/auth";
 
 // pages
 import LandingPage from "./pages/Landing/LandingPage";
@@ -15,10 +15,12 @@ import SamplePage from "./pages/SamplePage";
 const App = () => {
   return (
     <div>
-      <TopBar />
+      {/* <TopBar /> */}
       <div>
         <Switch>
-          <Route exact path="/" component={Auth(LandingPage, null)} />
+          <Route exact path="/register" component={RegisterPage} />
+
+          {/* <Route exact path="/" component={Auth(LandingPage, null)} />
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route exact path="/sample" component={SamplePage} />
@@ -33,7 +35,7 @@ const App = () => {
             path="/product/:productId"
             component={Auth(ProductPage, null)}
           />
-          <Route exact path="/user/cart" component={Auth(CartPage, true)} />
+          <Route exact path="/user/cart" component={Auth(CartPage, true)} /> */}
         </Switch>
       </div>
     </div>

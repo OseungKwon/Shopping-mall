@@ -1,59 +1,69 @@
-import React, { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import AuthForm from './AuthForm'
-
-import { registerUser } from '../../modules/auth'
+import React, { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import AuthForm from "./AuthForm";
+import axios from "axios";
+import {
+  postData,
+  postDataFailure,
+  postDataSuccess
+} from "../../redux/authSlice";
+import { registerUser } from "../../modules/auth";
 const Register = ({ history }) => {
-    const dispatch = useDispatch()
-    const [form, setForm] = useState({
-        name: '',
-        email: '',
-        password: '',
-        passwordConfirm: ''
-    })
-    const { name, email, password, passwordConfirm } = form
+  const dispatch = useDispatch();
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    password: "",
+    passwordConfirm: ""
+  });
+  const { name, email, password, passwordConfirm } = form;
 
-    const onChange = e => {
-        const nextForm = {
-            ...form,
-            [e.target.id]: e.target.value
-        }
-        setForm(nextForm)
+  const onChange = (e) => {
+    const nextForm = {
+      ...form,
+      [e.target.id]: e.target.value
+    };
+    setForm(nextForm);
+  };
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    let data = {
+      name,
+      email,
+      password,
+      passwordConfirm
+    };
+    console.log("data", data);
+    try {
+      const res = await axios.post(
+        "http://localhost:5000/api/users/register",
+        data
+      );
+      if (res.data.success === true) {
+        dispatch(postDataSuccess());
+      } else {
+        dispatch(postDataFailure(res.data.err));
+        alert("Mongo error");
+      }
+    } catch (error) {
+      dispatch(postDataFailure(error));
+      alert(error);
     }
-    const onSubmit = e => {
-        e.preventDefault();
+  };
+  //const user = useSelector((state) => state.users);
+  //console.log(form);
+  //console.log('user', user);
+  useEffect(() => {
+    dispatch(postData());
+  }, [dispatch]);
+  return (
+    <div>
+      <div>
+        <AuthForm type="register" onChange={onChange} onSubmit={onSubmit} />
+      </div>
+    </div>
+  );
+};
 
-        let data = {
-            name,
-            lastName: 'user',
-            email,
-            password,
-            passwordConfirm
-        }
-        console.log(data)
-        dispatch(registerUser(data))
-            .then(response => {
-                if (response.payload.success) {
-                    console.log(response)
-                    history.push('/login')
-                } else {
-                    alert(response.payload.err.errmsg)
-                }
-            })
-
-    }
-    return (
-        <div>
-            <div>
-                <AuthForm
-                    type="register"
-                    onChange={onChange}
-                    onSubmit={onSubmit}
-
-                />
-            </div>
-        </div>
-    )
-}
-
-export default Register
+export default Register;
