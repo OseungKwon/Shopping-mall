@@ -13,20 +13,40 @@ export const authSlice = createSlice({
     authUser: (state, action) => {
       state.userData = action.payload;
     },
-    postData: (state) => {
+    registerData: (state) => {
       state.userData.loading = true;
     },
-    postDataSuccess: (state) => {
+    registerDataSuccess: (state) => {
       state.userData.loading = false;
       state.userData.success = true;
     },
-    postDataFailure: (state, action) => {
+    registerDataFailure: (state, action) => {
       state.userData.loading = false;
       state.userData.success = false;
+      state.userData.err = action.payload;
+    },
+    loginData: (state) => {
+      state.loading = true;
+    },
+    loginDataSuccess: (state, action) => {
+      state.userData.loading = false;
+      state.userData.loginSuccess = true;
+      state.userData.userId = action.payload;
+    },
+    loginDataFailure: (state, action) => {
+      state.userData.loading = false;
+      state.userData.loginSuccess = false;
       state.userData.err = action.payload;
     }
   }
 });
-export const { authUser, postData, postDataSuccess, postDataFailure } =
-  authSlice.actions;
+export const {
+  authUser,
+  registerData,
+  registerDataSuccess,
+  registerDataFailure,
+  loginData,
+  loginDataSuccess,
+  loginDataFailure
+} = authSlice.actions;
 export default authSlice.reducer;

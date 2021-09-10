@@ -3,9 +3,9 @@ import { useDispatch } from "react-redux";
 import AuthForm from "./AuthForm";
 import axios from "axios";
 import {
-  postData,
-  postDataFailure,
-  postDataSuccess
+  registerData,
+  registerDataSuccess,
+  registerDataFailure
 } from "../../redux/authSlice";
 import { registerUser } from "../../modules/auth";
 const Register = ({ history }) => {
@@ -41,13 +41,13 @@ const Register = ({ history }) => {
         data
       );
       if (res.data.success === true) {
-        dispatch(postDataSuccess());
+        dispatch(registerDataSuccess());
       } else {
-        dispatch(postDataFailure(res.data.err));
+        dispatch(registerDataFailure(res.data.err));
         alert("Mongo error");
       }
     } catch (error) {
-      dispatch(postDataFailure(error));
+      dispatch(registerDataFailure(error));
       alert(error);
     }
   };
@@ -55,7 +55,7 @@ const Register = ({ history }) => {
   //console.log(form);
   //console.log('user', user);
   useEffect(() => {
-    dispatch(postData());
+    dispatch(registerData());
   }, [dispatch]);
   return (
     <div>
