@@ -3,5 +3,6 @@
 + 주에 3번 이상 최적화 작업을 하고있음
 + https://velog.io/@wkahd01?tag=React-Project
 - react, redux, redux-toolkit
+![image](https://user-images.githubusercontent.com/54261116/142005805-f86c2de7-a779-40eb-980e-013caf8d0aab.png)
 
 할일: redux를 redux-toolkit 라이브러리 사용해 구조 수정하기
