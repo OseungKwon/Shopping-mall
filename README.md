@@ -1,6 +1,5 @@
 # React Project
- 리액트를 사용한 쇼핑 앱 만들기 프로젝트이다.
-+ 주에 3번 이상 최적화 작업을 하고있음
+ 리액트를 사용한 쇼핑 앱 만들기 프로젝트
 + https://velog.io/@wkahd01?tag=React-Project
 - react, redux, redux-toolkit
 ![image](https://user-images.githubusercontent.com/54261116/142005805-f86c2de7-a779-40eb-980e-013caf8d0aab.png)
